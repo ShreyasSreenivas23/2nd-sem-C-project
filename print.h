@@ -14,8 +14,11 @@ void print(char name[],char id[] ,char mobile[]) {
 
     printf("\n--- Bill Details ---\n");
     printf("User Details:\nName: %sUser ID: %s\nMobile: %s\n\n", name, id, mobile);
-
-
+    FILE *fp;
+    fp = fopen("bills.txt","a");
+    fprintf(fp, "%s", "\n--- Bill Details ---\n");
+    fprintf(fp,"User Details:\nName: %sUser ID: %s\nMobile: %s\n\n", name, id, mobile);
+    fclose(fp);
 }
 void print2(int boughtProducts[10], float totalAmount){
     printf("Products Purchased:\n");
@@ -25,7 +28,19 @@ void print2(int boughtProducts[10], float totalAmount){
         }
     }
     printf("\nTotal Amount: $%.2f\n", totalAmount);
-
     printf("\n--- Have A Good Day ---\n");
+
+    FILE *fp;
+    fp = fopen("bills.txt","a");
+    fprintf(fp, "Products Purchased:\n");
+    for (int i = 0; i < 10; i++) {
+        if (boughtProducts[i] > 0) {
+            fprintf(fp,"%s - $%.2f x %d\n",products[i], prices[i], boughtProducts[i]);
+        }
+    }
+    fprintf(fp,"\nTotal Amount: $%.2f\n", totalAmount);
+    fprintf(fp,"\n--- Have A Good Day ---\n");
+    fprintf(fp,"\n-----------------------\n");
+    fclose(fp);
 }
 #endif
