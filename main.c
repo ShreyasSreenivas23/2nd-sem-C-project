@@ -3,6 +3,7 @@
 #include <string.h>
 #include "disp.h"
 #include "print.h"
+#include "search.h"
 struct Product {
     char name[50];
     float price;
@@ -78,6 +79,7 @@ int main() {
 
     print(name, id, mobile);
     print2(boughtProducts, totalAmount);
-
+    printf("You may exit the execution. However if you want to search your bills,\n");
+    search();
     return 0;
 }
